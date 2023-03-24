@@ -1,0 +1,26 @@
+.movie-color {
+  background-color: rgb(181, 181, 221);
+}
+
+.movie-color-light {
+  background-color: rgb(240, 240, 248);
+}
+
+.movie-header {
+  height: 12rem;
+}
+
+.movie-middle {
+  height: 100%;
+  overflow: auto; 
+}
+
+.movie-restriction {
+  max-height: 1rem;
+}
+
+.movie-img {
+  width: 100%;
+  max-width: 7rem;
+}
+

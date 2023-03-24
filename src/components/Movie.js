@@ -1,3 +1,4 @@
+import "./Movie.css";
 import React from "react";
 import ReviewList from "./ReviewList";
 import ReviewForm from "./ReviewForm";
@@ -15,13 +16,13 @@ export default function Movie(props) {
   // Calculate the average number of stars reviewers gave this movie.
   let total = 0;
   movieReviews.forEach((review) => (total += review.stars));
-  let average = (total === 0 ? 0 : Math.round(total / movieReviews.length));
+  let average = total === 0 ? 0 : Math.round(total / movieReviews.length);
 
   // Function to create a string that displays the star rating graphically.
   // This function is used here to disply the average rating for a
   // movie and is also passed to ReviewList to be used to display
   // the stars for each individual review.
-  function starDisplay(numberOfStars) {   
+  function starDisplay(numberOfStars) {
     let stars = "";
     for (let i = 0; i < numberOfStars; i++) stars += "\u2605";
     for (let i = numberOfStars; i < 5; i++) stars += "\u2606";
@@ -31,19 +32,22 @@ export default function Movie(props) {
   // Render one movie, including all of it's reviews (ReviewList component) and a
   // form for creating additional reviews (ReviewForm component).
   return (
-    <div className="card border-dark w-75 my-4 mx-auto">
+    <div className="card border-dark my-4 mx-auto">
       <div className="card-header movie-color">
         <div className="container">
-          <div className="row movie-row">
-            <div className="col-sm h-100">
-              <img src={props.movie.img} alt="avatar" className="h-100" />
+          <div className="row movie-header py-1">
+            <div className="col-2 h-100 pt-1">
+              <img src={props.movie.img} alt="avatar" className="movie-img" />
             </div>
-            <div className="col-sm-6">
-              <h3>{props.movie.title}</h3>
+            <div className="col-10 movie-middle">
+              <h3>
+                {props.movie.title} {starDisplay(average)} 
+              </h3><img
+                  src={props.movie.restriction}
+                  alt="restriction"
+                  className="movie-restriction"
+                /><br/><br/>
               {props.movie.synopsis}
-            </div>
-            <div className="col-sm text-center">
-              <h5>Rating: {starDisplay(average)}</h5>
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import FiveStarRating from "./FiveStarRating";
+import Stars from "./Stars";
 
-// A review form that gathers the user, the review, 
+// A form that gathers the user, the review,
 // and the number of stars for a given movie review.
-// Component FiveStarRating is used to provide
+// Component Stars is used to provide
 // a GUI for entering the number of stars.
 export default function ReviewForm(props) {
 
@@ -13,11 +13,10 @@ export default function ReviewForm(props) {
   const [contentValue, setContentValue] = useState("");
 
   // Prevent default form submission behavior.
-  // Create a new Review object with data from the form, 
-  // injecting the movieId from  
+  // Create a new Review object with data from the form,
+  // injecting the movieId from
   // props.movie.movieId and today's date.
   const handleSubmit = (event) => {
-
     event.preventDefault();
     let today = new Date().toLocaleDateString();
     props.addReview({
@@ -48,10 +47,11 @@ export default function ReviewForm(props) {
               onChange={(e) => setUserValue(e.target.value)}
             />
           </div>
-          <div className="col-sm-6">
-            <label className="form-label">Rating</label>
-            <FiveStarRating rating={starsValue} setRating={setStarsValue} />
+          <div className="col-sm-6 pt-4">
+            <Stars rating={starsValue} setRating={setStarsValue} />
           </div>
+        </div>
+        <div className="row">
           <div className="col-sm-12">
             <label className="form-label">Comments</label>
             <input
@@ -63,7 +63,9 @@ export default function ReviewForm(props) {
           </div>
         </div>
       </div>
-      <button className="btn btn-primary mt-3 mb-2 btn-sm" onClick={handleSubmit}>
+      <button
+        className="btn btn-primary mt-3 mb-2 btn-sm"
+        onClick={handleSubmit}>
         Create
       </button>
     </form>

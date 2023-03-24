@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState } from "react";
 import MovieList from "./components/MovieList";
 
@@ -11,14 +10,16 @@ let nextReviewId = 10;
 export default function App() {
 
   // Variable to hold the path to our movie pics.
-  let imagePath = "./images/";
+  let movieImagePath = "./images/movies/";
+  let movieRestrictionPath = "./images/restrictions/";
 
   // Create an array of movies (movieList) in our state.  
   const [movieList, setMovieList] = useState([
     {
       movieId: 1,
       title: "Avatar",
-      img: imagePath + "avatar.webp",
+      img: movieImagePath + "avatar.webp",
+      restriction: movieRestrictionPath + "pg-13.webp",
       synopsis: `Jake Sully lives with his newfound family formed on the planet 
       of Pandora. Once a familiar threat returns to finish what was previously 
       started, Jake must work with Neytiri and the army of the Na'vi race to protect their planet.`,
@@ -26,7 +27,8 @@ export default function App() {
     {
       movieId: 2,
       title: "Champions",
-      img: imagePath + "champions.webp",
+      img: movieImagePath + "champions.webp",
+      restriction: movieRestrictionPath + "pg.webp",
       synopsis: `A former minor-league basketball coach is ordered by the court to manage a team 
       of players with intellectual disabilities. He soon realizes that despite his doubts, 
       together, this team can go further than they ever imagined.`,
@@ -34,7 +36,8 @@ export default function App() {
     {
       movieId: 3,
       title: "Cocaine Bear",
-      img: imagePath + "cocaineBear.webp",
+      img: movieImagePath + "cocaineBear.webp",
+      restriction: movieRestrictionPath + "r.webp",
       synopsis: `An oddball group of cops, criminals, tourists, and teens converges in a 
       Georgia forest where a 500-pound black bear goes on a murderous rampage after 
       unintentionally ingesting cocaine.`,
@@ -86,7 +89,7 @@ export default function App() {
   // Just for future reference on how to update the list...
   // const updateReview = (updatedReview) => {
   //   setReviewList(reviewList.map(review => 
-  //     (review.id === updatedReview.reviewId) ?
+  //     (review.reviewId === updatedReview.reviewId) ?
   //       { ...review, ...updatedReview } :
   //       review
   //   ));
@@ -94,13 +97,11 @@ export default function App() {
   
   // Our application consists of a MovieList component.
   return (
-    <div className="App">
-      <MovieList
-        movieList={movieList}
-        reviewList={reviewList}
-        addReview={addReview}
-        removeReview={removeReview}
-      />
-    </div>
+    <MovieList
+      movieList={movieList}
+      reviewList={reviewList}
+      addReview={addReview}
+      removeReview={removeReview}
+    />
   );
 }

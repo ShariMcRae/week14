@@ -1,0 +1,9 @@
+span.star:hover {
+  cursor: pointer;
+}
+
+span.star {
+  font-size: 2rem;
+}
+
+
